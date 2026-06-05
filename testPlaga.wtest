@@ -1,0 +1,23 @@
+import plagas.*
+import elementos.*
+
+describe "tests elementos y barrios" {
+  const casita = new Hogar (mugre = 5 , confort = 10)
+  const huertita = new Huerta(produccion = 300)
+  const mascotita = new Mascota(salud = 300)
+
+  const barrioNuevo = new Barrio(elementos = [casita, huertita, mascotita])
+  test "casita es buena" {
+    assert.that(casita.esBuena())
+  }
+  test "huertita es buena" {
+    assert.that(huertita.esBuena())
+  }
+  test "mascotita es buena" {
+    assert.that(mascotita.esBuena())
+  }
+    test "barrioNuevo es copado" {
+    assert.that(barrioNuevo.esCopado())
+  }
+
+}
