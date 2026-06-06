@@ -19,5 +19,58 @@ describe "tests elementos y barrios" {
     test "barrioNuevo es copado" {
     assert.that(barrioNuevo.esCopado())
   }
+}
+describe "primeros tests de Plagas " {
+  /* obtener el nivel de daño de una plaga cualquiera.
+saber si una plaga transmite enfermedades o no.*/
+  const cuca1 = new Cucaracha(poblacion =10, pesoPromedio=8)
+  const garra1 = new Garrapata(poblacion =10)
+  test "nivel de daño de cuca1" {
+    assert.equals(5, cuca1.nivelDeDaño())
+  }
+  test "cuca1 no transmite enfermedades" {
+    assert.notThat(cuca1.transmiteEnfermedad())
+  }
+  test "garra1 sí transmite enfermedades" {
+    assert.that(garra1.transmiteEnfermedad())
+  }
 
+
+}
+describe "Segundos tests de Plagas" {
+  /*poder simular que un elemento recibe el ataque de una plaga, generándose los efectos indicados en el elemento.
+  aplicar los efectos sobre la plaga
+  decirle al elemento que recibe un ataque usando lo que se agregó en la etapa anterior.
+ */
+    const cuca1 = new Cucaracha(poblacion =10, pesoPromedio=8)
+    const garra1 = new Garrapata(poblacion =10)
+    const casa1 = new Hogar (mugre =10, confort =21)    
+  test "la casa1 es buena si no tiene ataques" {
+    assert.that(casa1.esBuena())
+  }
+  test "cuca1 peso promedio antes del ataque"{
+    assert.equals(8, cuca1.pesoPromedio())
+  }
+    test "cuca1 poblacion antes del ataque"{
+    assert.equals(10, cuca1.poblacion())
+  }
+  test "si casa1 recibe ataque e cuca1 ya no es buena" {
+    cuca1.atacar(casa1)
+    assert.notThat(casa1.esBuena())
+  }
+  test "cuca1 peso promedio despues del ataque"{
+    cuca1.atacar(casa1)
+    assert.equals(10, cuca1.pesoPromedio())
+  }
+  test "cuca1 poblacion despues del ataque"{
+    cuca1.atacar(casa1)
+    assert.equals(11, cuca1.poblacion())
+  }
+  test "garra1 poblacion antes del ataque"{
+    assert.equals(10, garra1.poblacion())
+  }
+  test "garra1 poblacion despues del ataque"{
+    garra1.atacar(casa1)
+    assert.equals(12, garra1.poblacion())
+  }
 }
